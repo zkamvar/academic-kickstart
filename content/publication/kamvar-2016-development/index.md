@@ -15,7 +15,7 @@ links:
   - icon_pack: fab
     icon: github
     name: source code
-    url: "https://github.com/zkamvar/dissertation#readme
+    url: "https://github.com/zkamvar/dissertation#readme"
 url_pdf: "https://ir.library.oregonstate.edu/concern/graduate_thesis_or_dissertations/dz010t67t"
 ---
 
