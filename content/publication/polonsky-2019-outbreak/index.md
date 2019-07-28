@@ -7,7 +7,11 @@ publication_types: ["2"]
 abstract: ""
 featured: false
 publication: "*Philosophical Transactions of the Royal Society B: Biological Sciences*"
-url_pdf: "https://doi.org/10.1098/rstb.2018.0276"
+links:
+  - icon_pack: fab
+    icon: github
+    name: figures
+    url: "https://github.com/zkamvar/challenges-manuscript-figures#readme"
 doi: "10.1098/rstb.2018.0276"
 ---
 

@@ -7,7 +7,16 @@ publication_types: ["2"]
 abstract: ""
 featured: false
 publication: "*Tropical Plant Pathology*"
-url_pdf: "https://doi.org/10.1007/s40858-018-00273-w"
 doi: "10.1007/s40858-018-00273-w"
+url_preprint: "https://peerj.com/preprints/26622/"
+links:
+  - icon_pack: ai
+    icon: osf
+    name: OSF project
+    url: "https://osf.io/2x7fc/"
+  - icon_pack: fab
+    icon: github
+    name: code
+    url: "https://github.com/everhartlab/SscPhenoProj#readme"
 ---
 

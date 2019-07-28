@@ -8,6 +8,11 @@ abstract: ""
 featured: false
 publication: "*F1000Research*"
 url_pdf: "https://doi.org/10.12688/f1000research.18002.1"
+links:
+  - icon_pack: fab
+    icon: github
+    name: code 
+    url: "https://github.com/reconhub/incidence#readme"
 doi: "10.12688/f1000research.18002.1"
 ---
 

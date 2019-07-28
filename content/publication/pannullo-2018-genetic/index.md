@@ -7,7 +7,16 @@ publication_types: ["2"]
 abstract: ""
 featured: false
 publication: "*Tropical Plant Pathology*"
-url_pdf: "https://doi.org/10.1007/s40858-018-0266-5"
 doi: "10.1007/s40858-018-0266-5"
+url_preprint: "https://peerj.com/preprints/26600/"
+links:
+  - icon_pack: ai
+    icon: osf
+    name: OSF project
+    url: "https://osf.io/e4uph/"
+  - icon_pack: fab
+    icon: github
+    name: code
+    url: "https://github.com/everhartlab/brazil-sclerotinia-2017#readme"
 ---
 
