@@ -13,6 +13,10 @@ links:
     icon: github
     name: code 
     url: "https://github.com/reconhub/incidence#readme"
+  - icon_pack: ai
+    icon: open-access
+    name: PDF (open access)
+    url: "https://f1000research.com/articles/8-139/v1/pdf?article_uuid=ba26c37d-d515-4e5c-a482-e7e75d200c3f"
 doi: "10.12688/f1000research.18002.1"
 ---
 

@@ -8,6 +8,10 @@ abstract: ""
 featured: false
 publication: "*Philosophical Transactions of the Royal Society B: Biological Sciences*"
 links:
+  - icon_pack: ai
+    icon: open-access
+    name: PDF (open access)
+    url: "https://royalsocietypublishing.org/doi/pdf/10.1098/rstb.2018.0276"
   - icon_pack: fab
     icon: github
     name: figures
