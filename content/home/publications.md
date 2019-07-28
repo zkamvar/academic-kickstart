@@ -36,7 +36,7 @@ subtitle = ""
   #   2 = Compact
   #   3 = Card
   #   4 = Citation (publication only)
-  view = 2
+  view = 3
   
 [design.background]
   # Apply a background color, gradient, or image.
@@ -67,5 +67,5 @@ subtitle = ""
 +++
 
 {{% alert note %}}
-Quickly discover relevant content by [filtering publications]({{< ref "/publication/_index.md" >}}).
+You can also [search publications by keyword or year]({{< ref "/publication/_index.md" >}}).
 {{% /alert %}}
