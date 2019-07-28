@@ -21,7 +21,7 @@ featured: true
 > services to underserved immigrant and refugee families in the United States.
 
 <a href="https://www.raicestexas.org/donate">
-  <img src="../../img/banners/coffee.jpg" alt="click here to donate to RAICES Texas" title="click here to donate to RAICES Texas" width="100%" align="center">
+  <img src="featured.jpg" alt="click here to donate to RAICES Texas" title="click here to donate to RAICES Texas" width="100%" align="center">
 </a>
 
 Last Tuesday, I released [poppr version 2.8.3], which [fixed a corner case in 
