@@ -12,7 +12,7 @@ url_preprint: "https://peerj.com/preprints/26670/"
 links:
   - icon_pack: ai
     icon: open-access
-    name: PDF (open access)
+    name: "PDF (open access)"
     url: "https://peerj.com/articles/4152.pdf"
   - icon_pack: ai
     icon: osf
