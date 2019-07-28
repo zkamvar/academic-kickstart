@@ -11,7 +11,8 @@ tags:
   - 2fa
   - https
   - ssh
-banner: img/git-push-fail.gif
+image:
+  preview_only: true
 ---
 
 Since the end of 2018, I've been a part of a collaboration between [RECON] and

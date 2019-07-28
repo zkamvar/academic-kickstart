@@ -9,8 +9,10 @@ tags:
   - poppr
   - funding
   - dontations
-  - open scource
-banner: img/banners/coffee.jpg
+  - open source
+image:
+  preview_only: true
+featured: true
 ---
 
 > **tl;dr** I don't get paid to maintain *poppr* anymore and do so on my own
