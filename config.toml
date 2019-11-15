@@ -16,7 +16,7 @@ baseurl = "/"
 copyright = "&copy; Zhian N. Kamvar {year}"
 
 # Enable analytics by entering your Google Analytics tracking ID
-googleAnalytics = ""
+googleAnalytics = "UA-60561808-1"
 
 ############################
 ## Advanced options below ##
