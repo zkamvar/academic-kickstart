@@ -2,3 +2,5 @@ public/
 .idea/
 resources/_gen/*
 *.swp
+.Rproj.user
+.Rhistory
