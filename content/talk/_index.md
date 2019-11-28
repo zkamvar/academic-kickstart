@@ -14,4 +14,3 @@ header:
 ---
 
 
-{{< youtube LL1pdAmGFoM >}}
