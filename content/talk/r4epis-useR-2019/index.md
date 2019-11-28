@@ -22,10 +22,10 @@ url_slides: "https://bit.ly/2YNAZLx"
 url_video: "https://www.youtube.com/watch?v=LL1pdAmGFoM"
 
 links:
-- icon: github
-  icon_pack: fab
+- icon: home
+  icon_pack: fas
   name: code
-  url: https://github.com/R4EPI
+  url: https://r4epis.netlify.com
 ---
 
 
