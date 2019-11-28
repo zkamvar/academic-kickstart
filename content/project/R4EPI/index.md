@@ -24,7 +24,7 @@ tags:
 url_code: ""
 url_pdf: ""
 url_slides: "https://bit.ly/2YNAZLx"
-url_video: ""
+url_video: "https://www.youtube.com/watch?v=LL1pdAmGFoM"
 
 links:
 - icon: github
