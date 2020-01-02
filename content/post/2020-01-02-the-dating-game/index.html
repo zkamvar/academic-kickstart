@@ -53,6 +53,10 @@ I’m probably missing some, so I’ll try to use the
 <a href="https://cran.r-project.org/package=pkgsearch">{pkgsearch}</a> package to find them.
 I know that I want to search for any package that mentions “date” in the title
 and has either “parse”, “handle”, “convert”, or “detect” in the description.</p>
+<blockquote>
+<p>N.B. I <em>was</em> missing a package as Jim Hester kindly pointed out:</p>
+{{% tweet 1212787019677609985 %}}
+</blockquote>
 <pre class="r"><code>library(&quot;dplyr&quot;)
 library(&quot;stringr&quot;)
 library(&quot;pkgsearch&quot;)
@@ -143,10 +147,18 @@ the_formats &lt;- c(&quot;%Y-%m-%d&quot;  , &quot;%d %B %Y&quot;        , &quot;
 # Formats for {lubridate} are much easier to read
 print(lub_formats &lt;- unique(gsub(&quot;[[:punct:][:space:]]&quot;, &quot;&quot;, the_formats)))</code></pre>
 <pre><code>## [1] &quot;Ymd&quot; &quot;dBY&quot; &quot;mdy&quot; &quot;dmy&quot;</code></pre>
+<p>Setting up the {readr} function for use with {purrr}</p>
+<pre class="r"><code>the_locales &lt;- c(&quot;en&quot;, &quot;en&quot;, &quot;en&quot;, &quot;en&quot;, &quot;fr&quot;, &quot;en&quot;)
+readr_parse_date &lt;- function(date, format, locale) {
+  readr::parse_date(date, format = format, locale = readr::locale(locale))
+}
+purrrlist &lt;- list(the_dates, c(the_formats, NA), the_locales)
+the_origin &lt;- as.Date(&quot;1970-01-01&quot;)</code></pre>
 <pre class="r"><code>res &lt;- tibble(
   original      = the_dates,
   base          = as.Date(the_dates,                    format = the_formats),
   lubridate     = lubridate::parse_date_time(the_dates, orders = lub_formats),
+  readr         = purrr::pmap_dbl(purrrlist, readr_parse_date) %&gt;% as.Date(origin = the_origin),
   anytime       = anytime::anydate(the_dates),
   parsedate     = parsedate::parse_date(the_dates),
   date          = date::as.date(the_dates),
@@ -154,6 +166,10 @@ print(lub_formats &lt;- unique(gsub(&quot;[[:punct:][:space:]]&quot;, &quot;&quo
   rccdates      = rccdates::as.Dates(the_dates)
 ) %&gt;%
   mutate_at(-1, as.Date) </code></pre>
+<pre><code>## Warning: 1 failed to parse.</code></pre>
+<pre><code>## Warning: 1 parsing failure.
+## row col     expected actual
+##   1  -- date like NA  43865</code></pre>
 <table>
 <caption><span id="tab:1">Table 1: </span>Results</caption>
 <thead>
@@ -161,6 +177,7 @@ print(lub_formats &lt;- unique(gsub(&quot;[[:punct:][:space:]]&quot;, &quot;&quo
 <th align="left">original</th>
 <th align="left">base</th>
 <th align="left">lubridate</th>
+<th align="left">readr</th>
 <th align="left">anytime</th>
 <th align="left">parsedate</th>
 <th align="left">date</th>
@@ -170,6 +187,7 @@ print(lub_formats &lt;- unique(gsub(&quot;[[:punct:][:space:]]&quot;, &quot;&quo
 </thead>
 <tbody>
 <tr class="odd">
+<td align="left">2020-02-04</td>
 <td align="left">2020-02-04</td>
 <td align="left">2020-02-04</td>
 <td align="left">2020-02-04</td>
@@ -186,11 +204,13 @@ print(lub_formats &lt;- unique(gsub(&quot;[[:punct:][:space:]]&quot;, &quot;&quo
 <td align="left">2020-02-04</td>
 <td align="left">2020-02-04</td>
 <td align="left">2020-02-04</td>
+<td align="left">2020-02-04</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 </tr>
 <tr class="odd">
 <td align="left">2/4/20</td>
+<td align="left">2020-02-04</td>
 <td align="left">2020-02-04</td>
 <td align="left">2020-02-04</td>
 <td align="left">NA</td>
@@ -203,6 +223,7 @@ print(lub_formats &lt;- unique(gsub(&quot;[[:punct:][:space:]]&quot;, &quot;&quo
 <td align="left">4/2/20</td>
 <td align="left">2020-02-04</td>
 <td align="left">2020-04-02</td>
+<td align="left">2020-02-04</td>
 <td align="left">NA</td>
 <td align="left">2020-04-02</td>
 <td align="left">1920-04-02</td>
@@ -213,6 +234,7 @@ print(lub_formats &lt;- unique(gsub(&quot;[[:punct:][:space:]]&quot;, &quot;&quo
 <td align="left">04 Février 2020</td>
 <td align="left">NA</td>
 <td align="left">2020-04-20</td>
+<td align="left">2020-02-04</td>
 <td align="left">NA</td>
 <td align="left">2020-01-04</td>
 <td align="left">NA</td>
@@ -221,6 +243,7 @@ print(lub_formats &lt;- unique(gsub(&quot;[[:punct:][:space:]]&quot;, &quot;&quo
 </tr>
 <tr class="even">
 <td align="left">43865</td>
+<td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">4386-01-01</td>
@@ -237,6 +260,7 @@ print(lub_formats &lt;- unique(gsub(&quot;[[:punct:][:space:]]&quot;, &quot;&quo
 <tr class="header">
 <th align="right">base</th>
 <th align="right">lubridate</th>
+<th align="right">readr</th>
 <th align="right">anytime</th>
 <th align="right">parsedate</th>
 <th align="right">date</th>
@@ -248,6 +272,7 @@ print(lub_formats &lt;- unique(gsub(&quot;[[:punct:][:space:]]&quot;, &quot;&quo
 <tr class="odd">
 <td align="right">4</td>
 <td align="right">2</td>
+<td align="right">5</td>
 <td align="right">2</td>
 <td align="right">3</td>
 <td align="right">1</td>
@@ -262,9 +287,11 @@ print(lub_formats &lt;- unique(gsub(&quot;[[:punct:][:space:]]&quot;, &quot;&quo
 <li>{datetimeutils} could not convert a single date presented and {rccdate} could
 only parse the ISO 8601 formatted date (but it’s not meant to be a general
 date parsing package).</li>
-<li>The most successful package aside from {base} was {parsedate}, but it’s quite
-aggressive in its guessing, substituting the current day, month, and year
-when it cannot figure out what format the date is in.</li>
+<li>By far, the most successful package was {readr}, but it takes a bit of work
+to set up the function to return a date vector with multiple locales and
+formats.</li>
+<li>The most successful “magic” package (one without knowledge of formats) was
+{parsedate}.</li>
 <li>{anytime} is super conservative, but will assume that a string of numbers
 represents a date (e.g. 20200204).</li>
 <li>{lubridate} does fairly well, but it makes some strange mistakes with the
@@ -279,6 +306,7 @@ with_locale(c(LC_TIME = &quot;fr_FR.UTF-8&quot;), {
     original      = the_dates,
     base          = as.Date(the_dates,                    format = the_formats),
     lubridate     = lubridate::parse_date_time(the_dates, orders = lub_formats),
+    readr         = purrr::pmap_dbl(purrrlist, readr_parse_date) %&gt;% as.Date(origin = the_origin),
     anytime       = anytime::anydate(the_dates),
     parsedate     = parsedate::parse_date(the_dates),
     date          = date::as.date(the_dates),
@@ -295,6 +323,7 @@ with_locale(c(LC_TIME = &quot;fr_FR.UTF-8&quot;), {
 <th align="left">original</th>
 <th align="left">base</th>
 <th align="left">lubridate</th>
+<th align="left">readr</th>
 <th align="left">anytime</th>
 <th align="left">parsedate</th>
 <th align="left">date</th>
@@ -304,6 +333,7 @@ with_locale(c(LC_TIME = &quot;fr_FR.UTF-8&quot;), {
 </thead>
 <tbody>
 <tr class="odd">
+<td align="left">2020-02-04</td>
 <td align="left">2020-02-04</td>
 <td align="left">2020-02-04</td>
 <td align="left">2020-02-04</td>
@@ -320,11 +350,13 @@ with_locale(c(LC_TIME = &quot;fr_FR.UTF-8&quot;), {
 <td align="left">2020-02-04</td>
 <td align="left">2020-02-04</td>
 <td align="left">2020-02-04</td>
+<td align="left">2020-02-04</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 </tr>
 <tr class="odd">
 <td align="left">2/4/20</td>
+<td align="left">2020-02-04</td>
 <td align="left">2020-02-04</td>
 <td align="left">2020-02-04</td>
 <td align="left">NA</td>
@@ -337,6 +369,7 @@ with_locale(c(LC_TIME = &quot;fr_FR.UTF-8&quot;), {
 <td align="left">4/2/20</td>
 <td align="left">2020-02-04</td>
 <td align="left">2020-04-02</td>
+<td align="left">2020-02-04</td>
 <td align="left">NA</td>
 <td align="left">2020-04-02</td>
 <td align="left">1920-04-02</td>
@@ -347,6 +380,7 @@ with_locale(c(LC_TIME = &quot;fr_FR.UTF-8&quot;), {
 <td align="left">04 Février 2020</td>
 <td align="left">2020-02-04</td>
 <td align="left">2020-04-20</td>
+<td align="left">2020-02-04</td>
 <td align="left">NA</td>
 <td align="left">2020-01-04</td>
 <td align="left">NA</td>
@@ -355,6 +389,7 @@ with_locale(c(LC_TIME = &quot;fr_FR.UTF-8&quot;), {
 </tr>
 <tr class="even">
 <td align="left">43865</td>
+<td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">4386-01-01</td>
@@ -372,9 +407,11 @@ with_locale(c(LC_TIME = &quot;fr_FR.UTF-8&quot;), {
 answer when it comes to parsing dates. I’ve helped out with <a href="https://www.repidemicsconsortium.org/linelist/reference/guess_dates.html">a project that aims
 at trying to provide yet another magic
 solution</a>,
-but even it has drawbacks. All the available packages have their own
-idiosyncrasies and it’s an absolute minefield when it comes to dates (note that
-this doesn’t even get into things like <a href="https://en.wikipedia.org/wiki/Year_2038_problem">the year 2038
+but even it has drawbacks. <strong>You ultimately get the best results when you know
+the formats and locales you are dealing with,</strong> so the best option is just to
+evangelize about the ISO 8601 and hope. All the available packages have their
+own idiosyncrasies and it’s an absolute minefield when it comes to dates (note
+that this doesn’t even get into things like <a href="https://en.wikipedia.org/wiki/Year_2038_problem">the year 2038
 problem</a>, or <a href="https://en.wikipedia.org/wiki/Leap_second">leap
 seconds</a>).</p>
 </div>
