@@ -83,3 +83,4 @@ creating user-friendly and sensible computational tools in R.
 This site serves as my personal site where I can blog about various subjects
 including R programming, reproducible science, and population genetics.
 
+**Hire me in 2020!**
