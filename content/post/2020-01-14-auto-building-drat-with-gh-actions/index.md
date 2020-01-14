@@ -18,12 +18,12 @@ tags:
   - R
   - RECON
 subtitle: ''
-summary: ''
+summary: 'Combining GitHub actions and {drat.builder} makes it easy to create an auto-building drat repository for your R packages'
 authors: ["Zhian N. Kamvar"]
 lastmod: '2020-01-14T13:00:30Z'
-featured: no
+featured: true 
 image:
-  caption: ''
+  caption: 'screen capture of GitHub Action build process showing a successfully updated drat repository'
   focal_point: ''
   preview_only: no
 projects: []
