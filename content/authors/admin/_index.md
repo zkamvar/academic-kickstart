@@ -14,18 +14,19 @@ role: Research Software Engineer
 
 # Organizations/Affiliations
 organizations:
-- name: Imperial College London
-  url: ""
+- name: The Carpentries
+  url: "https://carpentries.org"
 - name: R Epidemics Consortium
   url: "https://www.repidemicsconsortium.org"
 
 # Short bio (displayed in user profile at end of posts)
-bio: I am a population geneticist, data scientist, plant pathologist, and R package developer working at Imperial College, London
+bio: I am a population geneticist, data scientist, plant pathologist, and R package developer. I currently work as the Lesson Infrastructure Technology Developer at The Carpentries.
 
 interests:
 - Reproducible Research
 - Population Genetics
 - Robust and Sustainable Software Tools
+- Community Education
 
 education:
   courses:
@@ -75,12 +76,13 @@ user_groups: []
 # - Visitors
 ---
 
-I'm a research software engineer currently working in the field of outbreak
-response analytics. I'm trained in the [population genetics of clonal plant
+I am a Lesson Infrastructure Technology Developer at [The
+Carpentries](https://carpentries.org) working to make the Lesson Infrastructure
+a more accessible and friendly place to contribute. I'm trained in the
+[population genetics of clonal plant
 pathogens](https://grunwaldlab.github.io/poppr) and have a strong passion for
 creating user-friendly and sensible computational tools in R. 
 
 This site serves as my personal site where I can blog about various subjects
 including R programming, reproducible science, and population genetics.
 
-**Hire me in 2020!**

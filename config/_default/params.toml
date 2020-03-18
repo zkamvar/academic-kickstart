@@ -59,8 +59,7 @@ time_format = "15:04"
 
 # Enter contact details (optional). To hide a field, clear it to "".
 email = "zkamvar@gmail.com"
-phone = "+44 7444 840264"
-address = "Department of Infectious Disease, Imperial College London, St. Mary's Campus"
+phone = "+1 (669) 210-4157"
 
 # Office hours: use `<br>` to insert a line break, or set to "" to remove office hours
 office_hours = ""
